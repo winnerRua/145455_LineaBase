@@ -1,0 +1,49 @@
+﻿@using WAREGBOGWMM.Models
+@model WAREGBOGWMM.Models.AsignacionPermiso
+@{
+    ViewBag.Title = "Asignación de Permiso";
+}
+
+@using (Ajax.BeginForm("AsignacionPermiso", "AsignacionPermisos", new AjaxOptions() { OnSuccess = "alert('finalizo');", OnBegin = "alert('cargando');" }, new { @id = "PermitsAsignation" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Asignación de permiso</h2>
+    <div class="container">
+        <div class="row form-inline">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.codigoUsuario)
+                @Html.TextBoxFor(model => model.codigoUsuario, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.codigoUsuario)
+                <input type="submit" name="consultar" value="Buscar" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.region)
+                @Html.TextBoxFor(model => model.region, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.region)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.codigoRol)
+                @Html.TextBoxFor(model => model.codigoRol, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.codigoRol)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.estadoActivo)
+                @Html.TextBoxFor(model => model.estadoActivo, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.estadoActivo)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.permiso)
+                @Html.TextBoxFor(model => model.permiso, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.permiso)
+            </div>
+        </div>
+        <br />
+        <input type="submit" name="asignar" value="Guardar" />
+    </div>
+}

@@ -1,0 +1,33 @@
+﻿@using WAREGBOGWMM.Models
+@model WAREGBOGWMM.Models.Rol
+@{
+    ViewBag.Title = "Crear Roles";
+}
+
+@using (Ajax.BeginForm("CrearRoles", "GestionRoles", new AjaxOptions() { OnSuccess = "alert('finalizo');", OnBegin = "alert('cargando');" }, new { @id = "CreateRol" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Crear rol</h2>
+    <div class="container">
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.nombreRol)
+                @Html.TextBoxFor(model => model.nombreRol, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.nombreRol)
+            </div>
+        </div>
+        <br />
+        <input type="submit" class="btn btn-primary" value="Crear rol" />
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}

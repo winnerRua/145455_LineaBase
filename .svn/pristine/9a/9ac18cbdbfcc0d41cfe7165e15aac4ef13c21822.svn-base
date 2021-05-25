@@ -1,0 +1,32 @@
+﻿function QueryCurrentUser(URL) {
+
+    var form = $("#ModificarUsuarios-form");
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+            __RequestVerificationToken: token,
+            usuarioID: usuarioID
+        },
+        success: function (result) {
+            if (result.response === "ERROR") {
+                validator.showErrors({
+                    "usuarioID": "ID de usuario incorrecto."
+                });
+                $("#usuarioID").focus();
+                $("#newpassword").attr("readonly", "readonly");
+                $("#confirmpassword").attr("readonly", "readonly");
+            }
+            else {
+                $("#newpassword").removeAttr("readonly");
+
+                $("#confirmpassword").removeAttr("readonly");
+                CleanError("ChangePasswordError");
+            }
+            CloseLoading();
+        }
+    });
+
+}

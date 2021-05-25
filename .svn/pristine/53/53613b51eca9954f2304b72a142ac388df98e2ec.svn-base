@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Gestion de Roles";
+}
+
+<h2>Gestion Roles</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Crear rol</h2>
+        <p>
+            Módulo para crear roles que serán asignados a los usuarios de nuevo registro como a los que se les hará una actualización de información.
+        </p>
+        @Html.ActionLink("Crear rol", "CrearRoles", "GestionRoles")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Modificar rol</h2>
+        <p>
+            Módulo para modificar roles de usuario en el sistema.
+        </p>
+        @Html.ActionLink("Modificar rol", "ModificarRoles", "GestionRoles")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Habilitar/Inhabilitar rol</h2>
+        <p>
+            Módulo para habilitar o inhabilitar roles de usuario, esto solo debe ser usado por un administrador autorizado.
+        </p>
+        @Html.ActionLink("Habilitar/Inhabilitar rol", "AltaBajaRoles", "GestionRoles")
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@using WAREGBOGWMM.Models
+@model WAREGBOGWMM.Models.Rol
+@{
+    ViewBag.Title = "Alta/Baja Roles";
+}
+
+@using (Ajax.BeginForm("AltaBajaRoles", "GestionRoles", new AjaxOptions() { OnSuccess = "alert('finalizo');", OnBegin = "alert('cargando');" }, new { @id = "AltaBajaRoles-form" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Alta/Baja de rol</h2>
+    <div class="container">
+        <div class="row form-inline">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.rolID)
+                @Html.TextBoxFor(model => model.rolID, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.rolID)
+                <input type="button" onclick="EstateCurrentRol('@Url.Action("ConsultaRol", "GestionRoles")');" class="btn btn-primary" value="Buscar rol" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.nombreRol)
+                @Html.TextBoxFor(model => model.nombreRol, new { @disabled = "true", @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.nombreRol)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.estadoActivo)
+                @Html.TextBoxFor(model => model.estadoActivo, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.estadoActivo)
+            </div>
+        </div>
+
+        <br />
+        <input type="submit" class="btn btn-primary" value="Alta/Baja rol" />
+    </div>
+}

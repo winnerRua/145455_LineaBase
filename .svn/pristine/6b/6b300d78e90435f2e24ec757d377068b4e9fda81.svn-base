@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - AirPak POS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a href="@Url.Action("Index", "Home")" class="navbar-brand col-sm-3 col-md-2 mr-0">Grupo Coen</a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a href="#" class="nav-link">Cerrar Sesion</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link center-elements accordion" data-toggle="collapse" data-target="#submenu_usuarios">
+                                <i class="material-icons md-24">supervisor_account</i> Usuarios
+                                <i class="material-icons md-24 margin-all-left">arrow_drop_down</i>
+                            </a>
+                            <ul class="collapse" id="submenu_usuarios">
+                                <li><a href="@Url.Action("CrearUsuarios", "GestionUsuarios")"><i class="material-icons md-18">create</i> Crear</a></li>
+                                <li><a href="@Url.Action("ModificarUsuarios", "GestionUsuarios")"><i class="material-icons md-18">person_search</i> Actualizar</a></li>
+                                <li><a href="@Url.Action("AltaBajaUsuarios", "GestionUsuarios")"><i class="material-icons md-18">lock</i> Deshabilitar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link center-elements accordion" data-toggle="collapse" data-target="#submenu_roles">
+                                <i class="material-icons md-24">supervisor_account</i> Roles
+                                <i class="material-icons md-24 margin-all-left">arrow_drop_down</i>
+                            </a>
+                            <ul class="collapse" id="submenu_roles">
+                                <li><a href="@Url.Action("CrearRoles", "GestionRoles")"><i class="material-icons md-18">create</i> Crear</a></li>
+                                <li><a href="@Url.Action("ModificarRoles", "GestionRoles")"><i class="material-icons md-18">person_search</i> Actualizar</a></li>
+                                <li><a href="@Url.Action("AltaBajaRoles", "GestionRoles")"><i class="material-icons md-18">lock</i> Deshabilitar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link center-elements accordion" data-toggle="collapse" data-target="#submenu_permisos">
+                                <i class="material-icons md-24">supervisor_account</i> Permisos
+                                <i class="material-icons md-24 margin-all-left">arrow_drop_down</i>
+                            </a>
+                            <ul class="collapse" id="submenu_permisos">
+                                <li><a href="@Url.Action("CrearPermisos", "GestionPermisos")"><i class="material-icons md-18">create</i> Crear</a></li>
+                                <li><a href="@Url.Action("ModificarPermisos", "GestionPermisos")"><i class="material-icons md-18">person_search</i> Actualizar</a></li>
+                                <li><a href="@Url.Action("AltaBajaPermisos", "GestionPermisos")"><i class="material-icons md-18">lock</i> Deshabilitar</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

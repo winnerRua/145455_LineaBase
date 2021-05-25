@@ -1,0 +1,47 @@
+﻿@using WAREGBOGWMM.Models
+@model WAREGBOGWMM.Models.Permiso
+@{
+    ViewBag.Title = "Alta/Baja Permisos";
+}
+
+@using (Ajax.BeginForm("AltaBajaPermisos1", "GestionPermisos", new AjaxOptions() { OnSuccess = "alert('finalizo');", OnBegin = "alert('cargando');" }, new { @id = "AltaBajaPermisos1-form" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Habilitar/Inhabilitar permiso</h2>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="row form-inline">
+                @Html.LabelFor(model => model.permisoID)
+                @Html.TextBoxFor(model => model.permisoID, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.permisoID)
+                <input type="button" onclick="EstateCurrentPermit('@Url.Action("ConsultaPermiso", "GestionPermisos")');" class="btn btn-primary" value="Buscar permiso" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.descripcionPermiso)
+                @Html.TextBoxFor(model => model.descripcionPermiso, new { @readonly="true", @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.descripcionPermiso)
+            </div>
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.estadoActivo)
+                @Html.TextBoxFor(model => model.estadoActivo, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.estadoActivo)
+            </div>
+        </div>
+        <br />
+        <input type="submit" class="btn btn-primary" value="Actualizar" />
+    </div>
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}

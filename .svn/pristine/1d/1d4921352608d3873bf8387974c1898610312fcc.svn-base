@@ -1,0 +1,88 @@
+﻿function QueryCurrentUser(URL) {
+
+    var form = $("#ModificarUsuarios-form");
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    var usuarioID = $('#usuarioID').val();
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+            __RequestVerificationToken: token,
+            id: usuarioID
+        },
+        success: function (result) {
+            if (result.response === "ERROR") {
+                console.log('no retorno data');
+            }
+            else {
+                console.log('retorno data');
+                $('#nombreUsuario').val(result.data["nombreUsuario"]);
+                $('#nombreCompleto').val(result.data["nombreCompleto"]);
+                $('#documento').val(result.data["documento"]);
+                $('#direccion').val(result.data["direccion"]);
+                $('#telefono').val(result.data["telefono"]);
+                $('#nacimiento').val(result.data["nacimiento"]);
+                $('#generoID').val(result.data["generoID"]);
+                $('#correo').val(result.data["correo"]);
+                $('#pais').val(result.data["pais"]);
+                $('#rolID').val(result.data["rolID"]);
+                $('#contraseña').val(result.data["contraseña"]);
+                $('#estado').val(result.data["estado"]);
+            }
+        }
+    });
+}
+
+function QueryCurrentRol(URL) {
+
+    var form = $("#ModificarRoles-form");
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    var rolID = $('#rolID').val();
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+            __RequestVerificationToken: token,
+            uRol: rolID
+        },
+        success: function (result) {
+            if (result.response === "ERROR") {
+                console.log('no retorno data');
+            }
+            else {
+                console.log('retorno data');
+                $('#nombreRol').val(result.data["nombreRol"]);
+                $('#estadoActivo').val(result.data["estadoActivo"]);
+            }
+        }
+    });
+}
+
+function QueryCurrentPermit(URL) {
+
+    var form = $("#ModificarPermisos-form");
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    var permisoID = $('#permisoID').val();
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+            __RequestVerificationToken: token,
+            permiso: permisoID
+        },
+        success: function (result) {
+            if (result.response === "ERROR") {
+                console.log('no retorno data');
+            }
+            else {
+                console.log('retorno data');
+                $('#nombrePermiso').val(result.data["nombrePermiso"]);
+                $('#descripcion').val(result.data["descripcion"]);
+                $('#estadoActivo').val(result.data["estadoActivo"]);
+            }
+        }
+    });
+}

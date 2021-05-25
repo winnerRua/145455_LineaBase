@@ -1,0 +1,25 @@
+﻿function QueryCurrentUser(URL) {
+
+    var form = $("#ModificarUsuarios-form");
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    var usuarioID = $('#usuarioID').val();
+
+    $.ajax({
+        type: "POST",
+        url: URL,
+        data: {
+            __RequestVerificationToken: token,
+            id: usuarioID
+        },
+        success: function (result) {
+            if (result.response === "ERROR") {
+                console.log('no retorno data');
+            }
+            else {
+                console.log('retorno data');
+                $('#nombreCompleto').val(result.data["nombreCompleto"]);
+            }
+        }
+    });
+
+}

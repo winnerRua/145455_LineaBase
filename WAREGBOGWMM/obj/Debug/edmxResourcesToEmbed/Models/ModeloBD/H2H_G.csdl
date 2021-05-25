@@ -1,0 +1,773 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="H2H_GModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="h2h_BloqueoUsuario">
+    <Key>
+      <PropertyRef Name="BloqueoUsuarioID" />
+    </Key>
+    <Property Name="BloqueoUsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioID" Type="Int32" />
+    <Property Name="TipoEventoID" Type="Int32" />
+    <Property Name="Comentario" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_TipoEvento" Relationship="Self.FK_BloqueoUsuario_TipoEvento" FromRole="h2h_BloqueoUsuario" ToRole="h2h_TipoEvento" />
+    <NavigationProperty Name="h2h_Usuario" Relationship="Self.FK_BloqueoUsuario_Usuario" FromRole="h2h_BloqueoUsuario" ToRole="h2h_Usuario" />
+  </EntityType>
+  <EntityType Name="h2h_Componente">
+    <Key>
+      <PropertyRef Name="ComponenteID" />
+    </Key>
+    <Property Name="ComponenteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_LogGateWay" Relationship="Self.FK_LogGateWay_Componente" FromRole="h2h_Componente" ToRole="h2h_LogGateWay" />
+  </EntityType>
+  <EntityType Name="h2h_Funcionalidad">
+    <Key>
+      <PropertyRef Name="FuncionalidadID" />
+    </Key>
+    <Property Name="FuncionalidadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_Permiso" Relationship="Self.FK_Permiso_Menu" FromRole="h2h_Funcionalidad" ToRole="h2h_Permiso" />
+  </EntityType>
+  <EntityType Name="h2h_LogGateWay">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaEventoID" Type="Int32" />
+    <Property Name="NivelEventoID" Type="Int32" />
+    <Property Name="ComponenteID" Type="Int32" />
+    <Property Name="KeyEvento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Metadata" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="h2h_Componente" Relationship="Self.FK_LogGateWay_Componente" FromRole="h2h_LogGateWay" ToRole="h2h_Componente" />
+  </EntityType>
+  <EntityType Name="h2h_Pais">
+    <Key>
+      <PropertyRef Name="PaisID" />
+    </Key>
+    <Property Name="PaisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoISO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RegionID" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_Region" Relationship="Self.FK_Pais_Region" FromRole="h2h_Pais" ToRole="h2h_Region" />
+    <NavigationProperty Name="h2h_Usuario" Relationship="Self.FK_Usuario_Pais" FromRole="h2h_Pais" ToRole="h2h_Usuario" />
+  </EntityType>
+  <EntityType Name="h2h_ParametrosGW">
+    <Key>
+      <PropertyRef Name="ParametroGWID" />
+    </Key>
+    <Property Name="ParametroGWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="Binary" MaxLength="150" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="h2h_ParametrosPartner">
+    <Key>
+      <PropertyRef Name="ParametroPartnerID" />
+    </Key>
+    <Property Name="ParametroPartnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartnerConfigID" Type="Int32" />
+    <Property Name="NombreParametro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoParametro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EsRequerido" Type="Boolean" />
+    <Property Name="ParametroPadre" Type="Int32" />
+    <Property Name="ValorParametro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_PartnerConfig" Relationship="Self.FK_ParametrosPartner_PartnerConfig" FromRole="h2h_ParametrosPartner" ToRole="h2h_PartnerConfig" />
+    <NavigationProperty Name="h2h_PartnerParamNameSpace" Relationship="Self.FK_PartnerParamNameSpace_ParametrosPartner" FromRole="h2h_ParametrosPartner" ToRole="h2h_PartnerParamNameSpace" />
+  </EntityType>
+  <EntityType Name="h2h_Partner">
+    <Key>
+      <PropertyRef Name="PartnerID" />
+    </Key>
+    <Property Name="PartnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombrePartner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="Binary" MaxLength="8000" FixedLength="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioPartner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_PartnerConfig" Relationship="Self.FK_PartnerConfig_Partner" FromRole="h2h_Partner" ToRole="h2h_PartnerConfig" />
+  </EntityType>
+  <EntityType Name="h2h_Partner_serv_NameSpace">
+    <Key>
+      <PropertyRef Name="ServNameSpaceID" />
+    </Key>
+    <Property Name="ServNameSpaceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartnerConfigID" Type="Int32" />
+    <Property Name="Xml_NameSpace" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Xml_Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RecordDate" Type="DateTime" Precision="3" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="h2h_PartnerConfig">
+    <Key>
+      <PropertyRef Name="PartnerConfigID" />
+    </Key>
+    <Property Name="PartnerConfigID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PartnerID" Type="Int32" />
+    <Property Name="TipoServicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoRequesPartner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="TieneNameSpace" Type="Boolean" />
+    <NavigationProperty Name="h2h_ParametrosPartner" Relationship="Self.FK_ParametrosPartner_PartnerConfig" FromRole="h2h_PartnerConfig" ToRole="h2h_ParametrosPartner" />
+    <NavigationProperty Name="h2h_Partner" Relationship="Self.FK_PartnerConfig_Partner" FromRole="h2h_PartnerConfig" ToRole="h2h_Partner" />
+  </EntityType>
+  <EntityType Name="h2h_PartnerParamNameSpace">
+    <Key>
+      <PropertyRef Name="ParamNameSpaceID" />
+    </Key>
+    <Property Name="ParamNameSpaceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParametroPartnerID" Type="Int32" />
+    <Property Name="NameSpaceID" Type="Int32" />
+    <Property Name="UsarComoPrefijo" Type="Boolean" />
+    <Property Name="UsarComoAtributo" Type="Boolean" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_ParametrosPartner" Relationship="Self.FK_PartnerParamNameSpace_ParametrosPartner" FromRole="h2h_PartnerParamNameSpace" ToRole="h2h_ParametrosPartner" />
+  </EntityType>
+  <EntityType Name="h2h_Permiso">
+    <Key>
+      <PropertyRef Name="PermisoID" />
+    </Key>
+    <Property Name="PermisoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="RolID" Type="Int32" />
+    <Property Name="NombrePermiso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FuncionalidadID" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_Funcionalidad" Relationship="Self.FK_Permiso_Menu" FromRole="h2h_Permiso" ToRole="h2h_Funcionalidad" />
+    <NavigationProperty Name="h2h_PermisoPais" Relationship="Self.FK_AccesoDatos_Permiso" FromRole="h2h_Permiso" ToRole="h2h_PermisoPais" />
+    <NavigationProperty Name="h2h_Rol" Relationship="Self.FK_Permiso_Rol" FromRole="h2h_Permiso" ToRole="h2h_Rol" />
+    <NavigationProperty Name="h2h_PermisoRol" Relationship="Self.FK_PermisoRol_Permiso" FromRole="h2h_Permiso" ToRole="h2h_PermisoRol" />
+  </EntityType>
+  <EntityType Name="h2h_PermisoPais">
+    <Key>
+      <PropertyRef Name="PermisoPaisID" />
+    </Key>
+    <Property Name="PermisoPaisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PaisID" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="PermisoID" Type="Int32" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_Permiso" Relationship="Self.FK_AccesoDatos_Permiso" FromRole="h2h_PermisoPais" ToRole="h2h_Permiso" />
+  </EntityType>
+  <EntityType Name="h2h_PermisoRol">
+    <Key>
+      <PropertyRef Name="PermisoRolID" />
+    </Key>
+    <Property Name="PermisoRolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolID" Type="Int32" />
+    <Property Name="PermisoID" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_Permiso" Relationship="Self.FK_PermisoRol_Permiso" FromRole="h2h_PermisoRol" ToRole="h2h_Permiso" />
+    <NavigationProperty Name="h2h_Rol" Relationship="Self.FK_PermisoRol_Rol" FromRole="h2h_PermisoRol" ToRole="h2h_Rol" />
+  </EntityType>
+  <EntityType Name="h2h_Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_Pais" Relationship="Self.FK_Pais_Region" FromRole="h2h_Region" ToRole="h2h_Pais" />
+  </EntityType>
+  <EntityType Name="h2h_Rol">
+    <Key>
+      <PropertyRef Name="RolID" />
+    </Key>
+    <Property Name="RolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreRol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="h2h_Permiso" Relationship="Self.FK_Permiso_Rol" FromRole="h2h_Rol" ToRole="h2h_Permiso" />
+    <NavigationProperty Name="h2h_PermisoRol" Relationship="Self.FK_PermisoRol_Rol" FromRole="h2h_Rol" ToRole="h2h_PermisoRol" />
+    <NavigationProperty Name="h2h_Usuario" Relationship="Self.FK_Usuario_Rol" FromRole="h2h_Rol" ToRole="h2h_Usuario" />
+  </EntityType>
+  <EntityType Name="h2h_TipoEvento">
+    <Key>
+      <PropertyRef Name="TipoEventoID" />
+    </Key>
+    <Property Name="TipoEventoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescripcionEvento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="h2h_BloqueoUsuario" Relationship="Self.FK_BloqueoUsuario_TipoEvento" FromRole="h2h_TipoEvento" ToRole="h2h_BloqueoUsuario" />
+  </EntityType>
+  <EntityType Name="h2h_Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroDeTelefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="Genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RolID" Type="Int32" />
+    <Property Name="PaisID" Type="Int32" />
+    <NavigationProperty Name="h2h_BloqueoUsuario" Relationship="Self.FK_BloqueoUsuario_Usuario" FromRole="h2h_Usuario" ToRole="h2h_BloqueoUsuario" />
+    <NavigationProperty Name="h2h_Pais" Relationship="Self.FK_Usuario_Pais" FromRole="h2h_Usuario" ToRole="h2h_Pais" />
+    <NavigationProperty Name="h2h_Rol" Relationship="Self.FK_Usuario_Rol" FromRole="h2h_Usuario" ToRole="h2h_Rol" />
+  </EntityType>
+  <EntityType Name="h2h_HistorialContraseña">
+    <Key>
+      <PropertyRef Name="HistorialConstraseñaID" />
+    </Key>
+    <Property Name="HistorialConstraseñaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="UsuarioActualizacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="h2h_ParametrosBO">
+    <Key>
+      <PropertyRef Name="ParametroBOID" />
+    </Key>
+    <Property Name="ParametroBOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="Binary" MaxLength="150" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_BloqueoUsuario_TipoEvento">
+    <End Role="h2h_TipoEvento" Type="Self.h2h_TipoEvento" Multiplicity="0..1" />
+    <End Role="h2h_BloqueoUsuario" Type="Self.h2h_BloqueoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_TipoEvento">
+        <PropertyRef Name="TipoEventoID" />
+      </Principal>
+      <Dependent Role="h2h_BloqueoUsuario">
+        <PropertyRef Name="TipoEventoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloqueoUsuario_Usuario">
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="0..1" />
+    <End Role="h2h_BloqueoUsuario" Type="Self.h2h_BloqueoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="h2h_BloqueoUsuario">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogGateWay_Componente">
+    <End Role="h2h_Componente" Type="Self.h2h_Componente" Multiplicity="0..1" />
+    <End Role="h2h_LogGateWay" Type="Self.h2h_LogGateWay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Componente">
+        <PropertyRef Name="ComponenteID" />
+      </Principal>
+      <Dependent Role="h2h_LogGateWay">
+        <PropertyRef Name="ComponenteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permiso_Menu">
+    <End Role="h2h_Funcionalidad" Type="Self.h2h_Funcionalidad" Multiplicity="0..1" />
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Funcionalidad">
+        <PropertyRef Name="FuncionalidadID" />
+      </Principal>
+      <Dependent Role="h2h_Permiso">
+        <PropertyRef Name="FuncionalidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pais_Region">
+    <End Role="h2h_Region" Type="Self.h2h_Region" Multiplicity="0..1" />
+    <End Role="h2h_Pais" Type="Self.h2h_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Region">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="h2h_Pais">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Pais">
+    <End Role="h2h_Pais" Type="Self.h2h_Pais" Multiplicity="0..1" />
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Pais">
+        <PropertyRef Name="PaisID" />
+      </Principal>
+      <Dependent Role="h2h_Usuario">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosPartner_PartnerConfig">
+    <End Role="h2h_PartnerConfig" Type="Self.h2h_PartnerConfig" Multiplicity="0..1" />
+    <End Role="h2h_ParametrosPartner" Type="Self.h2h_ParametrosPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_PartnerConfig">
+        <PropertyRef Name="PartnerConfigID" />
+      </Principal>
+      <Dependent Role="h2h_ParametrosPartner">
+        <PropertyRef Name="PartnerConfigID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnerParamNameSpace_ParametrosPartner">
+    <End Role="h2h_ParametrosPartner" Type="Self.h2h_ParametrosPartner" Multiplicity="0..1" />
+    <End Role="h2h_PartnerParamNameSpace" Type="Self.h2h_PartnerParamNameSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_ParametrosPartner">
+        <PropertyRef Name="ParametroPartnerID" />
+      </Principal>
+      <Dependent Role="h2h_PartnerParamNameSpace">
+        <PropertyRef Name="ParametroPartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnerConfig_Partner">
+    <End Role="h2h_Partner" Type="Self.h2h_Partner" Multiplicity="0..1" />
+    <End Role="h2h_PartnerConfig" Type="Self.h2h_PartnerConfig" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Partner">
+        <PropertyRef Name="PartnerID" />
+      </Principal>
+      <Dependent Role="h2h_PartnerConfig">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AccesoDatos_Permiso">
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="0..1" />
+    <End Role="h2h_PermisoPais" Type="Self.h2h_PermisoPais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Permiso">
+        <PropertyRef Name="PermisoID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoPais">
+        <PropertyRef Name="PermisoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permiso_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_Permiso">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoRol_Permiso">
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="0..1" />
+    <End Role="h2h_PermisoRol" Type="Self.h2h_PermisoRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Permiso">
+        <PropertyRef Name="PermisoID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoRol">
+        <PropertyRef Name="PermisoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoRol_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_PermisoRol" Type="Self.h2h_PermisoRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoRol">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_Usuario">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="H2H_GEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="h2h_BloqueoUsuario" EntityType="Self.h2h_BloqueoUsuario" />
+    <EntitySet Name="h2h_Componente" EntityType="Self.h2h_Componente" />
+    <EntitySet Name="h2h_Funcionalidad" EntityType="Self.h2h_Funcionalidad" />
+    <EntitySet Name="h2h_LogGateWay" EntityType="Self.h2h_LogGateWay" />
+    <EntitySet Name="h2h_Pais" EntityType="Self.h2h_Pais" />
+    <EntitySet Name="h2h_ParametrosGW" EntityType="Self.h2h_ParametrosGW" />
+    <EntitySet Name="h2h_ParametrosPartner" EntityType="Self.h2h_ParametrosPartner" />
+    <EntitySet Name="h2h_Partner" EntityType="Self.h2h_Partner" />
+    <EntitySet Name="h2h_Partner_serv_NameSpace" EntityType="Self.h2h_Partner_serv_NameSpace" />
+    <EntitySet Name="h2h_PartnerConfig" EntityType="Self.h2h_PartnerConfig" />
+    <EntitySet Name="h2h_PartnerParamNameSpace" EntityType="Self.h2h_PartnerParamNameSpace" />
+    <EntitySet Name="h2h_Permiso" EntityType="Self.h2h_Permiso" />
+    <EntitySet Name="h2h_PermisoPais" EntityType="Self.h2h_PermisoPais" />
+    <EntitySet Name="h2h_PermisoRol" EntityType="Self.h2h_PermisoRol" />
+    <EntitySet Name="h2h_Region" EntityType="Self.h2h_Region" />
+    <EntitySet Name="h2h_Rol" EntityType="Self.h2h_Rol" />
+    <EntitySet Name="h2h_TipoEvento" EntityType="Self.h2h_TipoEvento" />
+    <EntitySet Name="h2h_Usuario" EntityType="Self.h2h_Usuario" />
+    <EntitySet Name="h2h_HistorialContraseña" EntityType="Self.h2h_HistorialContraseña" />
+    <EntitySet Name="h2h_ParametrosBO" EntityType="Self.h2h_ParametrosBO" />
+    <AssociationSet Name="FK_BloqueoUsuario_TipoEvento" Association="Self.FK_BloqueoUsuario_TipoEvento">
+      <End Role="h2h_TipoEvento" EntitySet="h2h_TipoEvento" />
+      <End Role="h2h_BloqueoUsuario" EntitySet="h2h_BloqueoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloqueoUsuario_Usuario" Association="Self.FK_BloqueoUsuario_Usuario">
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+      <End Role="h2h_BloqueoUsuario" EntitySet="h2h_BloqueoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogGateWay_Componente" Association="Self.FK_LogGateWay_Componente">
+      <End Role="h2h_Componente" EntitySet="h2h_Componente" />
+      <End Role="h2h_LogGateWay" EntitySet="h2h_LogGateWay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
+      <End Role="h2h_Funcionalidad" EntitySet="h2h_Funcionalidad" />
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pais_Region" Association="Self.FK_Pais_Region">
+      <End Role="h2h_Region" EntitySet="h2h_Region" />
+      <End Role="h2h_Pais" EntitySet="h2h_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Pais" Association="Self.FK_Usuario_Pais">
+      <End Role="h2h_Pais" EntitySet="h2h_Pais" />
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosPartner_PartnerConfig" Association="Self.FK_ParametrosPartner_PartnerConfig">
+      <End Role="h2h_PartnerConfig" EntitySet="h2h_PartnerConfig" />
+      <End Role="h2h_ParametrosPartner" EntitySet="h2h_ParametrosPartner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnerParamNameSpace_ParametrosPartner" Association="Self.FK_PartnerParamNameSpace_ParametrosPartner">
+      <End Role="h2h_ParametrosPartner" EntitySet="h2h_ParametrosPartner" />
+      <End Role="h2h_PartnerParamNameSpace" EntitySet="h2h_PartnerParamNameSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnerConfig_Partner" Association="Self.FK_PartnerConfig_Partner">
+      <End Role="h2h_Partner" EntitySet="h2h_Partner" />
+      <End Role="h2h_PartnerConfig" EntitySet="h2h_PartnerConfig" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AccesoDatos_Permiso" Association="Self.FK_AccesoDatos_Permiso">
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+      <End Role="h2h_PermisoPais" EntitySet="h2h_PermisoPais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permiso_Rol" Association="Self.FK_Permiso_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoRol_Permiso" Association="Self.FK_PermisoRol_Permiso">
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+      <End Role="h2h_PermisoRol" EntitySet="h2h_PermisoRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoRol_Rol" Association="Self.FK_PermisoRol_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_PermisoRol" EntitySet="h2h_PermisoRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="sp_insert_GWMMBloqueoUsuario">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="TipoEventoID" Mode="In" Type="Int32" />
+      <Parameter Name="Comentario" Mode="In" Type="String" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMComponente">
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMEvent">
+      <Parameter Name="CategoriaEventoID" Mode="In" Type="Int32" />
+      <Parameter Name="NivelEventoID" Mode="In" Type="Int32" />
+      <Parameter Name="ComponenteID" Mode="In" Type="Int32" />
+      <Parameter Name="KeyEvento" Mode="In" Type="String" />
+      <Parameter Name="Metadata" Mode="In" Type="String" />
+      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMFuncionalidad">
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMHistorialContraseña">
+      <Parameter Name="Contraseña" Mode="In" Type="String" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="Int32" />
+      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPais">
+      <Parameter Name="Nombre" Mode="In" Type="Int32" />
+      <Parameter Name="CodigoISO" Mode="In" Type="String" />
+      <Parameter Name="RegionID" Mode="In" Type="Int32" />
+      <Parameter Name="FechaCreacion" Mode="In" Type="DateTime" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMParametrosPartner">
+      <Parameter Name="PartnerConfigID" Mode="In" Type="Int32" />
+      <Parameter Name="NombreParametro" Mode="In" Type="DateTime" />
+      <Parameter Name="TipoParametro" Mode="In" Type="Boolean" />
+      <Parameter Name="EsRequerido" Mode="In" Type="Boolean" />
+      <Parameter Name="ParametroPadre" Mode="In" Type="Int32" />
+      <Parameter Name="ValorParametro" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPartner">
+      <Parameter Name="NombrePartner" Mode="In" Type="String" />
+      <Parameter Name="Contraseña" Mode="In" Type="Binary" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="UsuarioPartner" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPartnerConfig">
+      <Parameter Name="PartnerID" Mode="In" Type="String" />
+      <Parameter Name="TipoServicio" Mode="In" Type="Binary" />
+      <Parameter Name="TipoRequesPartner" Mode="In" Type="String" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="TieneNameSpace" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPartnerParamNameSpace">
+      <Parameter Name="ParametroPartnerID" Mode="In" Type="Int32" />
+      <Parameter Name="NameSpaceID" Mode="In" Type="Int32" />
+      <Parameter Name="UsarComoPrefijo" Mode="In" Type="Boolean" />
+      <Parameter Name="UsarComoAtributo" Mode="In" Type="Boolean" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPermiso">
+      <Parameter Name="RollID" Mode="In" Type="Int32" />
+      <Parameter Name="NombrePermiso" Mode="In" Type="String" />
+      <Parameter Name="FuncionalidadID" Mode="In" Type="Int32" />
+      <Parameter Name="UsarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPermisoPais">
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PaisID" Mode="In" Type="Int32" />
+      <Parameter Name="UsarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMPermisoRol">
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMRegion">
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMRol">
+      <Parameter Name="NombreRol" Mode="In" Type="String" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMTipoEvento">
+      <Parameter Name="DescripcionEvento" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_insert_GWMMUsuario">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Contraseña" Mode="In" Type="String" />
+      <Parameter Name="NumeroIdentificacion" Mode="In" Type="String" />
+      <Parameter Name="NumeroDeTelefono" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Direccion" Mode="In" Type="String" />
+      <Parameter Name="Genero" Mode="In" Type="String" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="PaisID" Mode="In" Type="Int32" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_select_GWMMPermisos" ReturnType="Collection(H2H_GModel.sp_select_GWMMPermisos_Result)">
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_select_GWMMRol" ReturnType="Collection(H2H_GModel.sp_select_GWMMRol_Result)">
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_select_GWMMUsuarios" ReturnType="Collection(H2H_GModel.sp_select_GWMMUsuarios_Result)">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="PaisID" Mode="In" Type="Int32" />
+      <Parameter Name="RolID" Mode="In" Type="String" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMComponente">
+      <Parameter Name="ComponenteID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMFuncionalidad">
+      <Parameter Name="FuncionalidadID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPartner">
+      <Parameter Name="ParnerID" Mode="In" Type="Int32" />
+      <Parameter Name="NombrePartner" Mode="In" Type="String" />
+      <Parameter Name="Contraseña" Mode="In" Type="Binary" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="UsuarioPartner" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPartnerConfig">
+      <Parameter Name="PartnerConfigID" Mode="In" Type="Int32" />
+      <Parameter Name="PartnerID" Mode="In" Type="Int32" />
+      <Parameter Name="TipoServicio" Mode="In" Type="String" />
+      <Parameter Name="TipoRequesPartner" Mode="In" Type="String" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="TieneNameSpace" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPartnerParamNameSpace">
+      <Parameter Name="ParamNameSpaceID" Mode="In" Type="Int32" />
+      <Parameter Name="ParametroPartnerID" Mode="In" Type="Int32" />
+      <Parameter Name="NameSpaceID" Mode="In" Type="Int32" />
+      <Parameter Name="UsarComoPrefijo" Mode="In" Type="Boolean" />
+      <Parameter Name="UsarComoAtributo" Mode="In" Type="Boolean" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPermiso">
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="RollID" Mode="In" Type="Int32" />
+      <Parameter Name="NombrePermiso" Mode="In" Type="String" />
+      <Parameter Name="FuncionalidadID" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPermisoPais">
+      <Parameter Name="PermisoPaisID" Mode="In" Type="Int32" />
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PaisID" Mode="In" Type="Int32" />
+      <Parameter Name="UsarioCreacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMPermisoRol">
+      <Parameter Name="PermisoRolID" Mode="In" Type="Int32" />
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMRegion">
+      <Parameter Name="RegionID" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_GWMMRol">
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="NombreRol" Mode="In" Type="String" />
+      <Parameter Name="PermisoID" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_update_Usuario">
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="Int32" />
+      <Parameter Name="NumeroIdentificacion" Mode="In" Type="String" />
+      <Parameter Name="NumeroDeTelefono" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="Boolean" />
+      <Parameter Name="Direccion" Mode="In" Type="Boolean" />
+      <Parameter Name="Genero" Mode="In" Type="Boolean" />
+      <Parameter Name="FechaNacimiento" Mode="In" Type="DateTime" />
+      <Parameter Name="RolID" Mode="In" Type="Int32" />
+      <Parameter Name="PaisID" Mode="In" Type="Int32" />
+      <Parameter Name="UsuarioCreacion" Mode="In" Type="Boolean" />
+      <Parameter Name="Estado" Mode="In" Type="Boolean" />
+      <Parameter Name="Contraseña" Mode="In" Type="String" />
+      <Parameter Name="UsuarioActualizacion" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_select_GWMMPermisos_Result">
+    <Property Type="String" Name="NombrePermiso" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="FuncionalidadID" Nullable="true" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_select_GWMMRol_Result">
+    <Property Type="String" Name="NombreRol" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Estado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_select_GWMMUsuarios_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NumeroIdentificacion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="NumeroDeTelefono" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Genero" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RolID" Nullable="true" />
+    <Property Type="Int32" Name="PaisID" Nullable="true" />
+  </ComplexType>
+</Schema>

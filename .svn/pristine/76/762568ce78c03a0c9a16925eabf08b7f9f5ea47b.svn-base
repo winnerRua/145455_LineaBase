@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace WAREGBOGWMM.Models
+{
+    public class Permiso
+    {
+        [Display(Name = "Descripción de permiso")]
+        [Required(ErrorMessage = "Descripción de permiso es requerido.")]
+        public string nombrePermiso { get; set; }
+
+        [Display(Name = "Región")]
+        [Required(ErrorMessage = "Región para el permiso es requerido.")]
+        public string region { get; set; }
+
+        [Display(Name = "Estado de permiso")]
+        [Required(ErrorMessage = "Estado de permiso es requerido.")]
+        public string estadoActivo { get; set; }
+
+        [Display(Name = "Descripción de permiso")]
+        [Required(ErrorMessage = "Descripción de permiso requerido.")]
+        public string descripcion { get; set; }
+
+        [Display(Name = "Código de rol")]
+        [Required(ErrorMessage = "Código de rol es requerido.")]
+        public string rolID { get; set; }
+
+        [Display(Name = "Código de permiso")]
+        [Required(ErrorMessage = "Código de permiso es requerido.")]
+        public string permisoID { get; set; }
+    }
+}

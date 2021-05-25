@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Gestion de usuarios";
+}
+
+<h1>Gestión de usuarios</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Crear usuarios</h2>
+        <p>
+            Módulo para crear usuarios que tendrán acceso al sistema.
+        </p>
+        @Html.ActionLink("Crear usuario", "CrearUsuarios", "GestionUsuarios")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Modificar usuarios</h2>
+        <p>
+            Módulo para modificar usuarios del sistema, las modificaciones tienen algunas restricciones.
+        </p>
+        @Html.ActionLink("Modificar usuario", "ModificarUsuarios", "GestionUsuarios")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Habilitar/Inhabilitar usuarios</h2>
+        <p>
+            Módulo para habilitar o inhabilitar un usuario, esto solo debe ser usado por un administrador autorizado.
+        </p>
+        @Html.ActionLink("Habilitar/Inhabilitar usuario", "AltaBajaUsuarios", "GestionUsuarios")
+    </div>
+</div>

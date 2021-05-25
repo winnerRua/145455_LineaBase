@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="H2H_GModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="h2h_BloqueoUsuario">
+    <Key>
+      <PropertyRef Name="BloqueoUsuarioID" />
+    </Key>
+    <Property Name="BloqueoUsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UsuarioID" Type="int" />
+    <Property Name="TipoEventoID" Type="int" />
+    <Property Name="Comentario" Type="varchar" MaxLength="150" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="h2h_Componente">
+    <Key>
+      <PropertyRef Name="ComponenteID" />
+    </Key>
+    <Property Name="ComponenteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="150" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="h2h_Funcionalidad">
+    <Key>
+      <PropertyRef Name="FuncionalidadID" />
+    </Key>
+    <Property Name="FuncionalidadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'H2H_G.remesadores.h2h_HistorialContraseña' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="h2h_HistorialContraseña">
+    <Key>
+      <PropertyRef Name="HistorialConstraseñaID" />
+    </Key>
+    <Property Name="HistorialConstraseñaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_LogGateWay">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoriaEventoID" Type="int" />
+    <Property Name="NivelEventoID" Type="int" />
+    <Property Name="ComponenteID" Type="int" />
+    <Property Name="KeyEvento" Type="varchar" MaxLength="100" />
+    <Property Name="Metadata" Type="nvarchar(max)" />
+    <Property Name="FechaCreacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="h2h_Pais">
+    <Key>
+      <PropertyRef Name="PaisID" />
+    </Key>
+    <Property Name="PaisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoISO" Type="varchar" MaxLength="50" />
+    <Property Name="RegionID" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'H2H_G.remesadores.h2h_ParametrosBO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="h2h_ParametrosBO">
+    <Key>
+      <PropertyRef Name="ParametroBOID" />
+    </Key>
+    <Property Name="ParametroBOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="varchar" MaxLength="50" />
+    <Property Name="Valor" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varbinary" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="h2h_ParametrosGW">
+    <Key>
+      <PropertyRef Name="ParametroGWID" />
+    </Key>
+    <Property Name="ParametroGWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="varchar" MaxLength="50" />
+    <Property Name="Valor" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varbinary" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="h2h_ParametrosPartner">
+    <Key>
+      <PropertyRef Name="ParametroPartnerID" />
+    </Key>
+    <Property Name="ParametroPartnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerConfigID" Type="int" />
+    <Property Name="NombreParametro" Type="varchar" MaxLength="50" />
+    <Property Name="TipoParametro" Type="varchar" MaxLength="50" />
+    <Property Name="EsRequerido" Type="bit" />
+    <Property Name="ParametroPadre" Type="int" />
+    <Property Name="ValorParametro" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_Partner">
+    <Key>
+      <PropertyRef Name="PartnerID" />
+    </Key>
+    <Property Name="PartnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombrePartner" Type="varchar" MaxLength="50" />
+    <Property Name="Contraseña" Type="varbinary" MaxLength="8000" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioPartner" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_Partner_serv_NameSpace">
+    <Key>
+      <PropertyRef Name="ServNameSpaceID" />
+    </Key>
+    <Property Name="ServNameSpaceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerConfigID" Type="int" />
+    <Property Name="Xml_NameSpace" Type="varchar" MaxLength="100" />
+    <Property Name="Xml_Prefix" Type="varchar" MaxLength="50" />
+    <Property Name="RecordDate" Type="datetime" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_PartnerConfig">
+    <Key>
+      <PropertyRef Name="PartnerConfigID" />
+    </Key>
+    <Property Name="PartnerConfigID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartnerID" Type="int" />
+    <Property Name="TipoServicio" Type="varchar" MaxLength="50" />
+    <Property Name="TipoRequesPartner" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="TieneNameSpace" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_PartnerParamNameSpace">
+    <Key>
+      <PropertyRef Name="ParamNameSpaceID" />
+    </Key>
+    <Property Name="ParamNameSpaceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParametroPartnerID" Type="int" />
+    <Property Name="NameSpaceID" Type="int" />
+    <Property Name="UsarComoPrefijo" Type="bit" />
+    <Property Name="UsarComoAtributo" Type="bit" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="datetime" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_Permiso">
+    <Key>
+      <PropertyRef Name="PermisoID" />
+    </Key>
+    <Property Name="PermisoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="RolID" Type="int" />
+    <Property Name="NombrePermiso" Type="varchar" MaxLength="50" />
+    <Property Name="FuncionalidadID" Type="int" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="h2h_PermisoPais">
+    <Key>
+      <PropertyRef Name="PermisoPaisID" />
+    </Key>
+    <Property Name="PermisoPaisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="10" />
+    <Property Name="PaisID" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="PermisoID" Type="int" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="h2h_PermisoRol">
+    <Key>
+      <PropertyRef Name="PermisoRolID" />
+    </Key>
+    <Property Name="PermisoRolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolID" Type="int" />
+    <Property Name="PermisoID" Type="int" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_Region">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="h2h_Rol">
+    <Key>
+      <PropertyRef Name="RolID" />
+    </Key>
+    <Property Name="RolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreRol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="h2h_TipoEvento">
+    <Key>
+      <PropertyRef Name="TipoEventoID" />
+    </Key>
+    <Property Name="TipoEventoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescripcionEvento" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="h2h_Usuario">
+    <Key>
+      <PropertyRef Name="UsuarioID" />
+    </Key>
+    <Property Name="UsuarioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NumeroDeTelefono" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="UsuarioActualizacion" Type="datetime" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="150" />
+    <Property Name="Estado" Type="bit" />
+    <Property Name="Genero" Type="varchar" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="datetime" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="RolID" Type="int" />
+    <Property Name="PaisID" Type="int" />
+  </EntityType>
+  <Association Name="FK_AccesoDatos_Permiso">
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="0..1" />
+    <End Role="h2h_PermisoPais" Type="Self.h2h_PermisoPais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Permiso">
+        <PropertyRef Name="PermisoID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoPais">
+        <PropertyRef Name="PermisoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloqueoUsuario_TipoEvento">
+    <End Role="h2h_TipoEvento" Type="Self.h2h_TipoEvento" Multiplicity="0..1" />
+    <End Role="h2h_BloqueoUsuario" Type="Self.h2h_BloqueoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_TipoEvento">
+        <PropertyRef Name="TipoEventoID" />
+      </Principal>
+      <Dependent Role="h2h_BloqueoUsuario">
+        <PropertyRef Name="TipoEventoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BloqueoUsuario_Usuario">
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="0..1" />
+    <End Role="h2h_BloqueoUsuario" Type="Self.h2h_BloqueoUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Usuario">
+        <PropertyRef Name="UsuarioID" />
+      </Principal>
+      <Dependent Role="h2h_BloqueoUsuario">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogGateWay_Componente">
+    <End Role="h2h_Componente" Type="Self.h2h_Componente" Multiplicity="0..1" />
+    <End Role="h2h_LogGateWay" Type="Self.h2h_LogGateWay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Componente">
+        <PropertyRef Name="ComponenteID" />
+      </Principal>
+      <Dependent Role="h2h_LogGateWay">
+        <PropertyRef Name="ComponenteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pais_Region">
+    <End Role="h2h_Region" Type="Self.h2h_Region" Multiplicity="0..1" />
+    <End Role="h2h_Pais" Type="Self.h2h_Pais" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Region">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="h2h_Pais">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosPartner_PartnerConfig">
+    <End Role="h2h_PartnerConfig" Type="Self.h2h_PartnerConfig" Multiplicity="0..1" />
+    <End Role="h2h_ParametrosPartner" Type="Self.h2h_ParametrosPartner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_PartnerConfig">
+        <PropertyRef Name="PartnerConfigID" />
+      </Principal>
+      <Dependent Role="h2h_ParametrosPartner">
+        <PropertyRef Name="PartnerConfigID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnerConfig_Partner">
+    <End Role="h2h_Partner" Type="Self.h2h_Partner" Multiplicity="0..1" />
+    <End Role="h2h_PartnerConfig" Type="Self.h2h_PartnerConfig" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Partner">
+        <PropertyRef Name="PartnerID" />
+      </Principal>
+      <Dependent Role="h2h_PartnerConfig">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartnerParamNameSpace_ParametrosPartner">
+    <End Role="h2h_ParametrosPartner" Type="Self.h2h_ParametrosPartner" Multiplicity="0..1" />
+    <End Role="h2h_PartnerParamNameSpace" Type="Self.h2h_PartnerParamNameSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_ParametrosPartner">
+        <PropertyRef Name="ParametroPartnerID" />
+      </Principal>
+      <Dependent Role="h2h_PartnerParamNameSpace">
+        <PropertyRef Name="ParametroPartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permiso_Menu">
+    <End Role="h2h_Funcionalidad" Type="Self.h2h_Funcionalidad" Multiplicity="0..1" />
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Funcionalidad">
+        <PropertyRef Name="FuncionalidadID" />
+      </Principal>
+      <Dependent Role="h2h_Permiso">
+        <PropertyRef Name="FuncionalidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permiso_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_Permiso">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoRol_Permiso">
+    <End Role="h2h_Permiso" Type="Self.h2h_Permiso" Multiplicity="0..1" />
+    <End Role="h2h_PermisoRol" Type="Self.h2h_PermisoRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Permiso">
+        <PropertyRef Name="PermisoID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoRol">
+        <PropertyRef Name="PermisoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisoRol_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_PermisoRol" Type="Self.h2h_PermisoRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_PermisoRol">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Pais">
+    <End Role="h2h_Pais" Type="Self.h2h_Pais" Multiplicity="0..1" />
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Pais">
+        <PropertyRef Name="PaisID" />
+      </Principal>
+      <Dependent Role="h2h_Usuario">
+        <PropertyRef Name="PaisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Rol">
+    <End Role="h2h_Rol" Type="Self.h2h_Rol" Multiplicity="0..1" />
+    <End Role="h2h_Usuario" Type="Self.h2h_Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="h2h_Rol">
+        <PropertyRef Name="RolID" />
+      </Principal>
+      <Dependent Role="h2h_Usuario">
+        <PropertyRef Name="RolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_insert_GWMMBloqueoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="UsuarioID" Type="int" Mode="In" />
+    <Parameter Name="TipoEventoID" Type="int" Mode="In" />
+    <Parameter Name="Comentario" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMEvent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="CategoriaEventoID" Type="int" Mode="In" />
+    <Parameter Name="NivelEventoID" Type="int" Mode="In" />
+    <Parameter Name="ComponenteID" Type="int" Mode="In" />
+    <Parameter Name="KeyEvento" Type="varchar" Mode="In" />
+    <Parameter Name="Metadata" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMFuncionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMHistorialContraseña" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="int" Mode="In" />
+    <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Nombre" Type="int" Mode="In" />
+    <Parameter Name="CodigoISO" Type="varchar" Mode="In" />
+    <Parameter Name="RegionID" Type="int" Mode="In" />
+    <Parameter Name="FechaCreacion" Type="datetime" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMParametrosPartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PartnerConfigID" Type="int" Mode="In" />
+    <Parameter Name="NombreParametro" Type="datetime" Mode="In" />
+    <Parameter Name="TipoParametro" Type="bit" Mode="In" />
+    <Parameter Name="EsRequerido" Type="bit" Mode="In" />
+    <Parameter Name="ParametroPadre" Type="int" Mode="In" />
+    <Parameter Name="ValorParametro" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="NombrePartner" Type="varchar" Mode="In" />
+    <Parameter Name="Contraseña" Type="varbinary" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioPartner" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPartnerConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PartnerID" Type="varchar" Mode="In" />
+    <Parameter Name="TipoServicio" Type="varbinary" Mode="In" />
+    <Parameter Name="TipoRequesPartner" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+    <Parameter Name="TieneNameSpace" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPartnerParamNameSpace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="ParametroPartnerID" Type="int" Mode="In" />
+    <Parameter Name="NameSpaceID" Type="int" Mode="In" />
+    <Parameter Name="UsarComoPrefijo" Type="bit" Mode="In" />
+    <Parameter Name="UsarComoAtributo" Type="bit" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPermiso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RollID" Type="int" Mode="In" />
+    <Parameter Name="NombrePermiso" Type="varchar" Mode="In" />
+    <Parameter Name="FuncionalidadID" Type="int" Mode="In" />
+    <Parameter Name="UsarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPermisoPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="PaisID" Type="int" Mode="In" />
+    <Parameter Name="UsarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMPermisoRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="NombreRol" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMTipoEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="DescripcionEvento" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_insert_GWMMUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+    <Parameter Name="NumeroIdentificacion" Type="varchar" Mode="In" />
+    <Parameter Name="NumeroDeTelefono" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Direccion" Type="varchar" Mode="In" />
+    <Parameter Name="Genero" Type="varchar" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="PaisID" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_select_GWMMPermisos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_select_GWMMRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_select_GWMMUsuarios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="UsuarioID" Type="int" Mode="In" />
+    <Parameter Name="PaisID" Type="int" Mode="In" />
+    <Parameter Name="RolID" Type="varchar" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMComponente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="ComponenteID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMFuncionalidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="FuncionalidadID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPartner" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="ParnerID" Type="int" Mode="In" />
+    <Parameter Name="NombrePartner" Type="varchar" Mode="In" />
+    <Parameter Name="Contraseña" Type="varbinary" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioPartner" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPartnerConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PartnerConfigID" Type="int" Mode="In" />
+    <Parameter Name="PartnerID" Type="int" Mode="In" />
+    <Parameter Name="TipoServicio" Type="varchar" Mode="In" />
+    <Parameter Name="TipoRequesPartner" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+    <Parameter Name="TieneNameSpace" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPartnerParamNameSpace" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="ParamNameSpaceID" Type="int" Mode="In" />
+    <Parameter Name="ParametroPartnerID" Type="int" Mode="In" />
+    <Parameter Name="NameSpaceID" Type="int" Mode="In" />
+    <Parameter Name="UsarComoPrefijo" Type="bit" Mode="In" />
+    <Parameter Name="UsarComoAtributo" Type="bit" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPermiso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="RollID" Type="int" Mode="In" />
+    <Parameter Name="NombrePermiso" Type="varchar" Mode="In" />
+    <Parameter Name="FuncionalidadID" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPermisoPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PermisoPaisID" Type="int" Mode="In" />
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="PaisID" Type="int" Mode="In" />
+    <Parameter Name="UsarioCreacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMPermisoRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="PermisoRolID" Type="int" Mode="In" />
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMRegion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RegionID" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_GWMMRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="NombreRol" Type="varchar" Mode="In" />
+    <Parameter Name="PermisoID" Type="int" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_update_Usuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="remesadores">
+    <Parameter Name="UsuarioID" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="int" Mode="In" />
+    <Parameter Name="NumeroIdentificacion" Type="varchar" Mode="In" />
+    <Parameter Name="NumeroDeTelefono" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="bit" Mode="In" />
+    <Parameter Name="Direccion" Type="bit" Mode="In" />
+    <Parameter Name="Genero" Type="bit" Mode="In" />
+    <Parameter Name="FechaNacimiento" Type="datetime" Mode="In" />
+    <Parameter Name="RolID" Type="int" Mode="In" />
+    <Parameter Name="PaisID" Type="int" Mode="In" />
+    <Parameter Name="UsuarioCreacion" Type="bit" Mode="In" />
+    <Parameter Name="Estado" Type="bit" Mode="In" />
+    <Parameter Name="Contraseña" Type="varchar" Mode="In" />
+    <Parameter Name="UsuarioActualizacion" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="H2H_GModelStoreContainer">
+    <EntitySet Name="h2h_BloqueoUsuario" EntityType="Self.h2h_BloqueoUsuario" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Componente" EntityType="Self.h2h_Componente" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Funcionalidad" EntityType="Self.h2h_Funcionalidad" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_LogGateWay" EntityType="Self.h2h_LogGateWay" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Pais" EntityType="Self.h2h_Pais" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_ParametrosGW" EntityType="Self.h2h_ParametrosGW" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_ParametrosPartner" EntityType="Self.h2h_ParametrosPartner" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Partner" EntityType="Self.h2h_Partner" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Partner_serv_NameSpace" EntityType="Self.h2h_Partner_serv_NameSpace" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_PartnerConfig" EntityType="Self.h2h_PartnerConfig" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_PartnerParamNameSpace" EntityType="Self.h2h_PartnerParamNameSpace" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Permiso" EntityType="Self.h2h_Permiso" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_PermisoPais" EntityType="Self.h2h_PermisoPais" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_PermisoRol" EntityType="Self.h2h_PermisoRol" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Region" EntityType="Self.h2h_Region" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Rol" EntityType="Self.h2h_Rol" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_TipoEvento" EntityType="Self.h2h_TipoEvento" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_Usuario" EntityType="Self.h2h_Usuario" Schema="remesadores" store:Type="Tables" />
+    <EntitySet Name="h2h_HistorialContraseña" EntityType="Self.h2h_HistorialContraseña" store:Type="Tables" store:Schema="remesadores">
+      <DefiningQuery>SELECT 
+    [h2h_HistorialContraseña].[HistorialConstraseñaID] AS [HistorialConstraseñaID], 
+    [h2h_HistorialContraseña].[Contraseña] AS [Contraseña], 
+    [h2h_HistorialContraseña].[FechaCreacion] AS [FechaCreacion], 
+    [h2h_HistorialContraseña].[UsuarioCreacion] AS [UsuarioCreacion], 
+    [h2h_HistorialContraseña].[FechaActualizacion] AS [FechaActualizacion], 
+    [h2h_HistorialContraseña].[UsuarioActualizacion] AS [UsuarioActualizacion], 
+    [h2h_HistorialContraseña].[Estado] AS [Estado]
+    FROM [remesadores].[h2h_HistorialContraseña] AS [h2h_HistorialContraseña]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="h2h_ParametrosBO" EntityType="Self.h2h_ParametrosBO" store:Type="Tables" store:Schema="remesadores">
+      <DefiningQuery>SELECT 
+    [h2h_ParametrosBO].[ParametroBOID] AS [ParametroBOID], 
+    [h2h_ParametrosBO].[Key] AS [Key], 
+    [h2h_ParametrosBO].[Valor] AS [Valor], 
+    [h2h_ParametrosBO].[Descripcion] AS [Descripcion]
+    FROM [remesadores].[h2h_ParametrosBO] AS [h2h_ParametrosBO]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_AccesoDatos_Permiso" Association="Self.FK_AccesoDatos_Permiso">
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+      <End Role="h2h_PermisoPais" EntitySet="h2h_PermisoPais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloqueoUsuario_TipoEvento" Association="Self.FK_BloqueoUsuario_TipoEvento">
+      <End Role="h2h_TipoEvento" EntitySet="h2h_TipoEvento" />
+      <End Role="h2h_BloqueoUsuario" EntitySet="h2h_BloqueoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BloqueoUsuario_Usuario" Association="Self.FK_BloqueoUsuario_Usuario">
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+      <End Role="h2h_BloqueoUsuario" EntitySet="h2h_BloqueoUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogGateWay_Componente" Association="Self.FK_LogGateWay_Componente">
+      <End Role="h2h_Componente" EntitySet="h2h_Componente" />
+      <End Role="h2h_LogGateWay" EntitySet="h2h_LogGateWay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pais_Region" Association="Self.FK_Pais_Region">
+      <End Role="h2h_Region" EntitySet="h2h_Region" />
+      <End Role="h2h_Pais" EntitySet="h2h_Pais" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosPartner_PartnerConfig" Association="Self.FK_ParametrosPartner_PartnerConfig">
+      <End Role="h2h_PartnerConfig" EntitySet="h2h_PartnerConfig" />
+      <End Role="h2h_ParametrosPartner" EntitySet="h2h_ParametrosPartner" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnerConfig_Partner" Association="Self.FK_PartnerConfig_Partner">
+      <End Role="h2h_Partner" EntitySet="h2h_Partner" />
+      <End Role="h2h_PartnerConfig" EntitySet="h2h_PartnerConfig" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartnerParamNameSpace_ParametrosPartner" Association="Self.FK_PartnerParamNameSpace_ParametrosPartner">
+      <End Role="h2h_ParametrosPartner" EntitySet="h2h_ParametrosPartner" />
+      <End Role="h2h_PartnerParamNameSpace" EntitySet="h2h_PartnerParamNameSpace" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permiso_Menu" Association="Self.FK_Permiso_Menu">
+      <End Role="h2h_Funcionalidad" EntitySet="h2h_Funcionalidad" />
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permiso_Rol" Association="Self.FK_Permiso_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoRol_Permiso" Association="Self.FK_PermisoRol_Permiso">
+      <End Role="h2h_Permiso" EntitySet="h2h_Permiso" />
+      <End Role="h2h_PermisoRol" EntitySet="h2h_PermisoRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisoRol_Rol" Association="Self.FK_PermisoRol_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_PermisoRol" EntitySet="h2h_PermisoRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Pais" Association="Self.FK_Usuario_Pais">
+      <End Role="h2h_Pais" EntitySet="h2h_Pais" />
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Rol" Association="Self.FK_Usuario_Rol">
+      <End Role="h2h_Rol" EntitySet="h2h_Rol" />
+      <End Role="h2h_Usuario" EntitySet="h2h_Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

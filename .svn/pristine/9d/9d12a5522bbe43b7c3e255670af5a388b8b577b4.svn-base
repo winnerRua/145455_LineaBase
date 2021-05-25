@@ -1,0 +1,122 @@
+﻿@using WAREGBOGWMM.Models
+@model WAREGBOGWMM.Models.Usuario
+
+@{
+    ViewBag.Title = "Modificar Usuarios";
+    //List<SelectListItem> items = (List<SelectListItem>)ViewBag.items;
+}
+
+@using (Ajax.BeginForm("ModificarUsuarios", "GestionUsuarios", new AjaxOptions() { OnSuccess = "alert('finalizo');", OnBegin = "alert('cargando');" }, new { @id = "ModificarUsuarios-form" }))
+{
+    @Html.AntiForgeryToken()
+    <h2>Modificar usuario</h2>
+    <div class="container">
+        <br />
+
+        <div class="row">
+            <div class="row form-inline">
+                @Html.LabelFor(model => model.usuarioID)
+                @Html.TextBoxFor(model => model.usuarioID, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.usuarioID)
+                <input type="button" onclick="QueryCurrentUser('@Url.Action("ConsultaUsuario", "GestionUsuarios")');" class="btn btn-primary" value="Buscar usuarios" />
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.nombreUsuario)
+                @Html.TextBoxFor(model => model.nombreUsuario, new { @class = "form-control input-lg place", @type = "text", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.nombreUsuario)
+            </div>
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.nombreCompleto)
+                @Html.TextBoxFor(model => model.nombreCompleto, new { @class = "form-control input-lg place", @type = "text", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.nombreCompleto)
+            </div>
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.documento)
+                @Html.TextBoxFor(model => model.documento, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.documento)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.direccion)
+                @Html.TextBoxFor(model => model.direccion, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.direccion)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.telefono)
+                @Html.TextBoxFor(model => model.telefono, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.telefono)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.fechaNacimiento)
+                @Html.TextBoxFor(model => model.fechaNacimiento, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.fechaNacimiento)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.generoID, new { @class = "control-label"})
+                @Html.DropDownListFor(model => model.generoID, Model.genero, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.generoID)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.correo)
+                @Html.TextBoxFor(model => model.correo, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.correo)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.pais)
+                @Html.TextBoxFor(model => model.pais, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.pais)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.rolID)
+                @Html.TextBoxFor(model => model.rolID, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.rolID)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.contra)
+                @Html.TextBoxFor(model => model.contra, new { @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.contra)
+            </div>
+
+            <div class="col-sm-3">
+                @Html.LabelFor(model => model.estado)
+                @Html.TextBoxFor(model => model.estado, new { @readonly = "true", @class = "form-control input-lg", @autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.estado)
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    <input type="submit" class="btn btn-primary" value="Modificar usuarios" />
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Gestion Permisos";
+}
+
+<h2>Gestion Permisos</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Crear permisos</h2>
+        <p>
+            Módulo para crear permisos que serán asignados a los usuarios de nuevo registro como a los que se les hará una actualización de información, estos estarán dados por región (ubicación).
+        </p>
+        @Html.ActionLink("Crear permiso", "CrearPermisos", "GestionPermisos")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Modificar permisos</h2>
+        <p>
+            Módulo para modificar permisos asignados a los usuarios en el sistema.
+        </p>
+        @Html.ActionLink("Modificar permiso", "ModificarPermisos", "GestionPermisos")
+    </div>
+
+    <div class="col-md-4">
+        <h2>Habilitar/Inhabilitar permisos</h2>
+        <p>
+            Módulo para habilitar o inhabilitar permisos de usuario, esto solo debe ser usado por un administrador autorizado.
+        </p>
+        @Html.ActionLink("Habilitar/Inhabilitar permiso", "AltaBajaPermisos", "GestionPermisos")
+    </div>
+</div>

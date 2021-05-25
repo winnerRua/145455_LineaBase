@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WAREGBOGWMM.App_Code;
+using WAREGBOGWMM.Models;
+
+namespace WAREGBOGWMM.Controllers
+{
+    public class GestionRolesController : Controller
+    {
+        // GET: GestionRoles
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult CrearRoles()
+        {
+            return View();
+        }
+
+        public ActionResult ModificarRoles()
+        {
+            return View();
+        }
+
+        public ActionResult AltaBajaRoles()
+        {
+            return View();
+        }
+
+        //Creación de roles
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearRoles(Rol uRol)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return View(user);
+                var oError = "";
+                new Utilerias().CreateRol(uRol, ref oError);
+            }
+            else
+            {
+                return View("Revise bien sus campos!");
+            }
+                //throw new Exception("");
+
+            return Content("<script language='javascript' type='text/javascript'>alert('Rol creado!');</script>");
+        }
+
+        //Modificación de roles.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ModificarRoles(Rol uRol)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return View(user);
+                var oError = "";
+                new Utilerias().UpdateRol(uRol, ref oError);
+            }
+            else
+            {
+                return View("Revise bien sus campos!");
+            }
+            //throw new Exception("");
+
+            return Content("<script language='javascript' type='text/javascript'>alert('Rol modificado!');</script>");
+        }
+
+        //Alta y bada de roles.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AltaBajaRoles(Rol uRol)
+        {
+            if (!ModelState.IsValid)
+            {
+                //return View(user);
+                var oError = "";
+                new Utilerias().UpDownRol(uRol, ref oError);
+            }
+            else
+            {
+                return View("Revise bien sus campos!");
+            }
+            //throw new Exception("");
+
+            return Content("<script language='javascript' type='text/javascript'>alert('Rol habilitado/inhabilitado!');</script>");
+        }
+    }
+}

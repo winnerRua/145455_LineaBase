@@ -1,0 +1,340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="H2H_GModelStoreContainer" CdmEntityContainer="H2H_GEntities1">
+    <EntitySetMapping Name="h2h_BloqueoUsuario">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_BloqueoUsuario">
+        <MappingFragment StoreEntitySet="h2h_BloqueoUsuario">
+          <ScalarProperty Name="BloqueoUsuarioID" ColumnName="BloqueoUsuarioID" />
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="TipoEventoID" ColumnName="TipoEventoID" />
+          <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Componente">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Componente">
+        <MappingFragment StoreEntitySet="h2h_Componente">
+          <ScalarProperty Name="ComponenteID" ColumnName="ComponenteID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Funcionalidad">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Funcionalidad">
+        <MappingFragment StoreEntitySet="h2h_Funcionalidad">
+          <ScalarProperty Name="FuncionalidadID" ColumnName="FuncionalidadID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_LogGateWay">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_LogGateWay">
+        <MappingFragment StoreEntitySet="h2h_LogGateWay">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="CategoriaEventoID" ColumnName="CategoriaEventoID" />
+          <ScalarProperty Name="NivelEventoID" ColumnName="NivelEventoID" />
+          <ScalarProperty Name="ComponenteID" ColumnName="ComponenteID" />
+          <ScalarProperty Name="KeyEvento" ColumnName="KeyEvento" />
+          <ScalarProperty Name="Metadata" ColumnName="Metadata" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Pais">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Pais">
+        <MappingFragment StoreEntitySet="h2h_Pais">
+          <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CodigoISO" ColumnName="CodigoISO" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_ParametrosGW">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_ParametrosGW">
+        <MappingFragment StoreEntitySet="h2h_ParametrosGW">
+          <ScalarProperty Name="ParametroGWID" ColumnName="ParametroGWID" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_ParametrosPartner">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_ParametrosPartner">
+        <MappingFragment StoreEntitySet="h2h_ParametrosPartner">
+          <ScalarProperty Name="ParametroPartnerID" ColumnName="ParametroPartnerID" />
+          <ScalarProperty Name="PartnerConfigID" ColumnName="PartnerConfigID" />
+          <ScalarProperty Name="NombreParametro" ColumnName="NombreParametro" />
+          <ScalarProperty Name="TipoParametro" ColumnName="TipoParametro" />
+          <ScalarProperty Name="EsRequerido" ColumnName="EsRequerido" />
+          <ScalarProperty Name="ParametroPadre" ColumnName="ParametroPadre" />
+          <ScalarProperty Name="ValorParametro" ColumnName="ValorParametro" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Partner">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Partner">
+        <MappingFragment StoreEntitySet="h2h_Partner">
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="NombrePartner" ColumnName="NombrePartner" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioPartner" ColumnName="UsuarioPartner" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Partner_serv_NameSpace">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Partner_serv_NameSpace">
+        <MappingFragment StoreEntitySet="h2h_Partner_serv_NameSpace">
+          <ScalarProperty Name="ServNameSpaceID" ColumnName="ServNameSpaceID" />
+          <ScalarProperty Name="PartnerConfigID" ColumnName="PartnerConfigID" />
+          <ScalarProperty Name="Xml_NameSpace" ColumnName="Xml_NameSpace" />
+          <ScalarProperty Name="Xml_Prefix" ColumnName="Xml_Prefix" />
+          <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_PartnerConfig">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_PartnerConfig">
+        <MappingFragment StoreEntitySet="h2h_PartnerConfig">
+          <ScalarProperty Name="PartnerConfigID" ColumnName="PartnerConfigID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="TipoServicio" ColumnName="TipoServicio" />
+          <ScalarProperty Name="TipoRequesPartner" ColumnName="TipoRequesPartner" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="TieneNameSpace" ColumnName="TieneNameSpace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_PartnerParamNameSpace">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_PartnerParamNameSpace">
+        <MappingFragment StoreEntitySet="h2h_PartnerParamNameSpace">
+          <ScalarProperty Name="ParamNameSpaceID" ColumnName="ParamNameSpaceID" />
+          <ScalarProperty Name="ParametroPartnerID" ColumnName="ParametroPartnerID" />
+          <ScalarProperty Name="NameSpaceID" ColumnName="NameSpaceID" />
+          <ScalarProperty Name="UsarComoPrefijo" ColumnName="UsarComoPrefijo" />
+          <ScalarProperty Name="UsarComoAtributo" ColumnName="UsarComoAtributo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Permiso">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Permiso">
+        <MappingFragment StoreEntitySet="h2h_Permiso">
+          <ScalarProperty Name="PermisoID" ColumnName="PermisoID" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="NombrePermiso" ColumnName="NombrePermiso" />
+          <ScalarProperty Name="FuncionalidadID" ColumnName="FuncionalidadID" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_PermisoPais">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_PermisoPais">
+        <MappingFragment StoreEntitySet="h2h_PermisoPais">
+          <ScalarProperty Name="PermisoPaisID" ColumnName="PermisoPaisID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="PermisoID" ColumnName="PermisoID" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_PermisoRol">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_PermisoRol">
+        <MappingFragment StoreEntitySet="h2h_PermisoRol">
+          <ScalarProperty Name="PermisoRolID" ColumnName="PermisoRolID" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="PermisoID" ColumnName="PermisoID" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Region">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Region">
+        <MappingFragment StoreEntitySet="h2h_Region">
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Rol">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Rol">
+        <MappingFragment StoreEntitySet="h2h_Rol">
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_TipoEvento">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_TipoEvento">
+        <MappingFragment StoreEntitySet="h2h_TipoEvento">
+          <ScalarProperty Name="TipoEventoID" ColumnName="TipoEventoID" />
+          <ScalarProperty Name="DescripcionEvento" ColumnName="DescripcionEvento" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_Usuario">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_Usuario">
+        <MappingFragment StoreEntitySet="h2h_Usuario">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="NumeroDeTelefono" ColumnName="NumeroDeTelefono" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_HistorialContraseña">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_HistorialContraseña">
+        <MappingFragment StoreEntitySet="h2h_HistorialContraseña">
+          <ScalarProperty Name="HistorialConstraseñaID" ColumnName="HistorialConstraseñaID" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="UsuarioActualizacion" ColumnName="UsuarioActualizacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="h2h_ParametrosBO">
+      <EntityTypeMapping TypeName="H2H_GModel.h2h_ParametrosBO">
+        <MappingFragment StoreEntitySet="h2h_ParametrosBO">
+          <ScalarProperty Name="ParametroBOID" ColumnName="ParametroBOID" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMBloqueoUsuario" FunctionName="H2H_GModel.Store.sp_insert_GWMMBloqueoUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMComponente" FunctionName="H2H_GModel.Store.sp_insert_GWMMComponente" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMEvent" FunctionName="H2H_GModel.Store.sp_insert_GWMMEvent" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMFuncionalidad" FunctionName="H2H_GModel.Store.sp_insert_GWMMFuncionalidad" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMHistorialContraseña" FunctionName="H2H_GModel.Store.sp_insert_GWMMHistorialContraseña" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPais" FunctionName="H2H_GModel.Store.sp_insert_GWMMPais" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMParametrosPartner" FunctionName="H2H_GModel.Store.sp_insert_GWMMParametrosPartner" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPartner" FunctionName="H2H_GModel.Store.sp_insert_GWMMPartner" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPartnerConfig" FunctionName="H2H_GModel.Store.sp_insert_GWMMPartnerConfig" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPartnerParamNameSpace" FunctionName="H2H_GModel.Store.sp_insert_GWMMPartnerParamNameSpace" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPermiso" FunctionName="H2H_GModel.Store.sp_insert_GWMMPermiso" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPermisoPais" FunctionName="H2H_GModel.Store.sp_insert_GWMMPermisoPais" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMPermisoRol" FunctionName="H2H_GModel.Store.sp_insert_GWMMPermisoRol" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMRegion" FunctionName="H2H_GModel.Store.sp_insert_GWMMRegion" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMRol" FunctionName="H2H_GModel.Store.sp_insert_GWMMRol" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMTipoEvento" FunctionName="H2H_GModel.Store.sp_insert_GWMMTipoEvento" />
+    <FunctionImportMapping FunctionImportName="sp_insert_GWMMUsuario" FunctionName="H2H_GModel.Store.sp_insert_GWMMUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_select_GWMMPermisos" FunctionName="H2H_GModel.Store.sp_select_GWMMPermisos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="H2H_GModel.sp_select_GWMMPermisos_Result">
+          <ScalarProperty Name="NombrePermiso" ColumnName="NombrePermiso" />
+          <ScalarProperty Name="FuncionalidadID" ColumnName="FuncionalidadID" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_select_GWMMRol" FunctionName="H2H_GModel.Store.sp_select_GWMMRol">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="H2H_GModel.sp_select_GWMMRol_Result">
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_select_GWMMUsuarios" FunctionName="H2H_GModel.Store.sp_select_GWMMUsuarios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="H2H_GModel.sp_select_GWMMUsuarios_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="NumeroDeTelefono" ColumnName="NumeroDeTelefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="RolID" ColumnName="RolID" />
+          <ScalarProperty Name="PaisID" ColumnName="PaisID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMComponente" FunctionName="H2H_GModel.Store.sp_update_GWMMComponente" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMFuncionalidad" FunctionName="H2H_GModel.Store.sp_update_GWMMFuncionalidad" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPartner" FunctionName="H2H_GModel.Store.sp_update_GWMMPartner" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPartnerConfig" FunctionName="H2H_GModel.Store.sp_update_GWMMPartnerConfig" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPartnerParamNameSpace" FunctionName="H2H_GModel.Store.sp_update_GWMMPartnerParamNameSpace" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPermiso" FunctionName="H2H_GModel.Store.sp_update_GWMMPermiso" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPermisoPais" FunctionName="H2H_GModel.Store.sp_update_GWMMPermisoPais" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMPermisoRol" FunctionName="H2H_GModel.Store.sp_update_GWMMPermisoRol" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMRegion" FunctionName="H2H_GModel.Store.sp_update_GWMMRegion" />
+    <FunctionImportMapping FunctionImportName="sp_update_GWMMRol" FunctionName="H2H_GModel.Store.sp_update_GWMMRol" />
+    <FunctionImportMapping FunctionImportName="sp_update_Usuario" FunctionName="H2H_GModel.Store.sp_update_Usuario" />
+  </EntityContainerMapping>
+</Mapping>
